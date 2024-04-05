@@ -199,52 +199,97 @@ bar:
         poll-interval: 30000
         anchors:
           discharging: &discharging
-            list:
-              right-spacing: 10
-              items:
-                - ramp:
-                    tag: capacity
+            map:
+              conditions:
+                capacity >= 30:
+                  list:
+                    deco: { stack: [underline: { size: 2, color: 6c9956ff }] }
+                    right-spacing: 10
                     items:
-                      - string: {text: , foreground: 6c9956ff, font: *icons}
-                      - string: {text: , foreground: 6c9956ff, font: *icons}
-                      - string: {text: , foreground: 6c9956ff, font: *icons}
-                      - string: {text: , foreground: 6c9956ff, font: *icons}
-                      - string: {text: , foreground: 6c9956ff, font: *icons}
-                      - string: {text: , foreground: 6c9956ff, font: *icons}
-                      - string: {text: , foreground: 6c9956ff, font: *icons}
-                      - string: {text: , foreground: 6c9956ff, font: *icons}
-                      - string: {text: , foreground: 6c9956ff, font: *icons}
-                      - string: {text: , foreground: 6c9956ff, font: *icons}
-                - map:
-                    default:
-                      list:
-                        right-spacing: 0
-                        items:
-                          - string: {text: "00", foreground: 3d3d3dff}
-                          - string: {text: "{capacity}%"}
-                    conditions:
-                      capacity == 100:
-                        - string: {text: "{capacity}%"}
-                      capacity >= 10:
-                        list:
+                      - map:
+                          conditions:
+                            capacity >= 90:
+                              string: {text: , foreground: 6c9956ff, font: *icons}
+                            capacity >= 80:
+                              string: {text: , foreground: 6c9956ff, font: *icons}
+                            capacity >= 70:
+                              string: {text: , foreground: 6c9956ff, font: *icons}
+                            capacity >= 60:
+                              string: {text: , foreground: 6c9956ff, font: *icons}
+                            capacity >= 50:
+                              string: {text: , foreground: 6c9956ff, font: *icons}
+                            capacity >= 40:
+                              string: {text: , foreground: e69353ff, font: *icons}
+                            capacity >= 30:
+                              string: {text: , foreground: 6c9956ff, font: *icons}
+                      - map:
+                          default:
+                            list:
+                              right-spacing: 0
+                              items:
+                                - string: {text: "0", foreground: 3d3d3dff}
+                                - string: {text: "{capacity}%"}
+                          conditions:
+                            capacity == 100:
+                                - string: {text: "{capacity}%"}
+
+                capacity > 15 && capacity < 30:
+                  list:
+                    deco: { stack: [underline: { size: 2, color: e69353ff }] }
+                    right-spacing: 10
+                    items:
+                      - map:
+                          conditions:
+                            capacity >= 20:
+                              string: {text: , foreground: e69353ff, font: *icons}
+                            capacity >= 10:
+                              string: {text: , foreground: e69353ff, font: *icons}
+                      - list:
                           right-spacing: 0
                           items:
                             - string: {text: "0", foreground: 3d3d3dff}
                             - string: {text: "{capacity}%"}
+                
+                capacity <= 15:
+                  list:
+                    deco: { stack: [underline: { size: 2, color: f90000ff }] }
+                    right-spacing: 10
+                    items:
+                      - string: {text: , foreground: f90000ff, font: *icons}
+                      - map:
+                          default:
+                            list:
+                              right-spacing: 0
+                              items:
+                                - string: {text: "00", foreground: 3d3d3dff}
+                                - string: {text: "{capacity}%"}
+                          conditions:
+                            capacity >= 10:
+                              list:
+                                right-spacing: 0
+                                items:
+                                  - string: {text: "0", foreground: 3d3d3dff}
+                                  - string: {text: "{capacity}%"}
+              
         content:
           map:
-            deco: { stack: [underline: { size: 2, color: 6c9956ff }] }
             conditions:
               state == unknown:
                 <<: *discharging
               state == discharging:
                 <<: *discharging
               state == charging:
-                - string: {text: , foreground: 6c9956ff, font: *icons}
-                - string: {text: " {capacity}%"}
+                list:
+                  deco: { stack: [underline: { size: 2, color: 6c9956ff }] }
+                  items:
+                    - string: {text: , foreground: 6c9956ff, font: *icons}
+                    - string: {text: " {capacity}%"}
               state == full:
-                - string: {text: , font: *icons}
-                - string: {text: " {capacity}% full"}
+                list:
+                  deco: { stack: [underline: { size: 2, color: 6c9956ff }] }
+                  items:
+                    - string: {text: , font: *icons}
+                    - string: {text: " {capacity}% full"}
               state == "not charging":
                 <<: *discharging
     - backlight:

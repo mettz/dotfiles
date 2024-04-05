@@ -4,7 +4,8 @@ if test -f /usr/share/autojump/autojump.fish;
 end
 
 set TTY (tty)
-if [ "$TTY" = "/dev/tty1" ]; then
+if [ "$TTY" = "/dev/tty1" ]
+    set -Ux WLR_EVDI_RENDER_DEVICE "/dev/dri/card1"
     exec Hyprland
 end
 
@@ -26,6 +27,10 @@ end
 # Utility functions
 function dotfiles
     /usr/bin/git --git-dir="$HOME/.dotfiles" --work-tree="$HOME" $argv
+end
+
+function code
+	/usr/bin/code --enable-features=UseOzonePlatform --ozone-platform=wayland $argv
 end
 
 # Path modifications
