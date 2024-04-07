@@ -29,11 +29,8 @@ function dotfiles
     /usr/bin/git --git-dir="$HOME/.dotfiles" --work-tree="$HOME" $argv
 end
 
-function code
-	/usr/bin/code --enable-features=UseOzonePlatform --ozone-platform=wayland $argv
-end
-
 # Path modifications
+set PATH "$HOME/.local/bin" $PATH
 set PATH $PATH "$HOME/.cargo/bin"
 
 # Fish prompt

@@ -219,7 +219,7 @@ bar:
                             capacity >= 50:
                               string: {text: , foreground: 6c9956ff, font: *icons}
                             capacity >= 40:
-                              string: {text: , foreground: e69353ff, font: *icons}
+                              string: {text: , foreground: 6c9956ff, font: *icons}
                             capacity >= 30:
                               string: {text: , foreground: 6c9956ff, font: *icons}
                       - map:
