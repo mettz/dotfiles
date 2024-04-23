@@ -1,100 +1,70 @@
+@import "./mocha.css";
+
 * {
-    border: none;
-    border-radius: 0;
-    font-family: "Iosevka Nerd Font", monospace;
-    font-size: 12px;
-    min-height: 0;
+  border: none;
+  font-family: FontAwesome, "IosevkaTerm Nerd Font", monospace;
+  font-size: 16px;
+  color: @text;
 }
 
 window#waybar {
-    background: #222222;
-    color: #dfdfdf;
+  background: transparent;
 }
-
-tooltip {
-  background: rgba(43, 48, 59, 0.5);
-  border: 1px solid rgba(100, 114, 125, 0.5);
-}
-tooltip label {
-  color: white;
-}
-
+/*-----modules indv----*/
 #workspaces button {
-    border-bottom: 1px solid transparent;
-    padding: 0 4px;
-    background: transparent;
-    color: #bbbbbb;
+  padding: 1px 5px;
+  margin-right: 8px;
+  color: @surface0;
+  background-color: transparent;
+  border-radius: 50%;
+}
+
+#workspaces button:hover {
+  box-shadow: inherit;
+  background-color: rgba(0,153,153,1);
 }
 
 #workspaces button.active {
-    color: #fba922; 
-}
-
-#workspaces button.empty {
-    color: #555555; 
-}
-
-#window {
-    border-bottom: 1px solid transparent;
+  background-color: alpha(@mauve, 0.5);
 }
 
 #clock,
 #battery,
-#network,
-#backlight,
-#pulseaudio,
+#cpu,
 #memory,
-#cpu {
-    color: white;
-    padding: 0 4px;
+#temperature,
+#network,
+#pulseaudio,
+#custom-media,
+#tray,
+#mode,
+#custom-power,
+#custom-menu,
+#idle_inhibitor, 
+#window,
+#backlight,
+#workspaces
+{
+  padding: 0px 8px;
 }
 
-#clock {
-    border-bottom: 1px solid #0a6cf5;
-}
 
-#network {
-    border-bottom: 1px solid #749bf0;
+/*-----Indicators----*/
+#idle_inhibitor.activated {
+  color: #2dcc36;
 }
-
-#battery {
-    border-bottom: 1px solid #6c9956;
-}
-
 #battery.charging {
-    color: white;
-    background-color: #26A65B;
+background: #316331;
 }
-
-@keyframes blink {
-    to {
-        background-color: #ffffff;
-        color: black;
-    }
-}
-
 #battery.warning:not(.charging) {
-    background: #f53c3c;
-    color: white;
-    animation-name: blink;
-    animation-duration: 0.5s;
-    animation-timing-function: steps(12);
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
+background: #9e5b2e;
+
 }
-
-#backlight {
-    border-bottom: 1px solid #e3e66c;
-} 
-
-#pulseaudio {
-    border-bottom: 1px solid #9778e1;
-} 
-
-#memory {
-    border-bottom: 1px solid #e69353;
-} 
-
-#cpu {
-    border-bottom: 1px solid #f90000;
-} 
+#battery.critical:not(.charging) {
+  
+  background: rgba(0,0,0,0);
+}
+#temperature.critical {
+  color: #cc3436;
+  background: rgba(0,0,0,0);
+}

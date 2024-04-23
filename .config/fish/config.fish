@@ -5,6 +5,7 @@ end
 
 set TTY (tty)
 if [ "$TTY" = "/dev/tty1" ]
+    set -Ux ELECTRON_OZONE_PLATFORM_HINT wayland
     set -Ux WLR_EVDI_RENDER_DEVICE "/dev/dri/card1"
     exec Hyprland
 end
@@ -32,6 +33,15 @@ end
 # Path modifications
 set PATH "$HOME/.local/bin" $PATH
 set PATH $PATH "$HOME/.cargo/bin"
+# pnpm
+set -gx PNPM_HOME "/home/mettz/.local/share/pnpm"
+if not string match -q -- $PNPM_HOME $PATH
+  set -gx PATH "$PNPM_HOME" $PATH
+end
+# pnpm end
+
+# Misc
+source $HOME/.asdf/asdf.fish
 
 # Fish prompt
 set -g fish_prompt_pwd_dir_length 3
@@ -49,7 +59,7 @@ function fish_prompt
 	set_color green
 	printf '%s' (__fish_git_prompt)
 	set_color purple
-	echo -n '> '
+	echo -n '>> '
 	set_color normal
 end
 
