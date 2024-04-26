@@ -1,0 +1,29 @@
+[alacritty.files]
+alacritty = "~/.config/alacritty"
+
+[dunst.files]
+dunst = "~/.config/dunst"
+
+[fish.files]
+fish = "~/.config/fish"
+
+[git.files]
+git = "~/.config/git"
+
+[hypr.files]
+hypr = "~/.config/hypr"
+
+[waybar.files]
+waybar = "~/.config/waybar"
+
+[wofi.files]
+wofi = "~/.config/wofi"
+
+[yambar.files]
+yambar = "~/.config/yambar"
+
+[tiling]
+depends = ["dunst", "hypr", "waybar", "wofi"]
+
+[shell]
+depends = ["alacritty", "fish", "git"]
