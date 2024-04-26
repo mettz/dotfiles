@@ -53,17 +53,24 @@ window#waybar {
 #idle_inhibitor.activated {
   color: #2dcc36;
 }
-#battery.charging {
-background: #316331;
-}
-#battery.warning:not(.charging) {
-background: #9e5b2e;
 
+#battery {
+  color: #40a02b;
 }
-#battery.critical:not(.charging) {
-  
-  background: rgba(0,0,0,0);
+
+
+#battery.warning {
+  color: #df8e1d;
 }
+
+#battery.critical {
+  color: #d20f39;
+}
+
+#battery.charging, #battery.plugged, #battery.full {
+  color: #40a02b;
+}
+
 #temperature.critical {
   color: #cc3436;
   background: rgba(0,0,0,0);

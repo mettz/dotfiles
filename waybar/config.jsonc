@@ -51,10 +51,10 @@
             "warning": 30,
             "critical": 15
         },
-        "format": "<span color='#6c9956'>{icon}</span>  {capacity}%",
-        "format-full": "<span color='#6c9956'>{icon}</span>  {capacity}%",
-        "format-charging": "<span color='#6c9956'></span>  {capacity}%",
-        "format-plugged": "<span color='#6c9956'></span>  {capacity}%",
+        "format": "{icon}  <span color='#fff'>{capacity}%</span>",
+        "format-full": "{icon}  <span color='#fff'>{capacity}%</span>",
+        "format-charging": "  <span color='#fff'>{capacity}%</span>",
+        "format-plugged": "  <span color='#fff'>{capacity}%</span>",
         "format-icons": ["", "", "", "", ""]
     },
     "pulseaudio": {
