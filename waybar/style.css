@@ -16,7 +16,7 @@ window#waybar {
   margin-right: 8px;
   color: @surface0;
   background-color: transparent;
-  border-radius: 50%;
+  border-radius: 4px;
 }
 
 #workspaces button:hover {
@@ -25,7 +25,7 @@ window#waybar {
 }
 
 #workspaces button.active {
-  background-color: alpha(@mauve, 0.5);
+  background-color: alpha(@sapphire, 0.75);
 }
 
 #clock,
