@@ -1,20 +1,35 @@
 [init]
 	defaultBranch = main
+
 [user]
 	name = Mattia Guazzaloca
 	email = me@mettz.dev
+
 [color]
 	ui = true
+
 [core]
 	autocrlf = input
 	safecrlf = true
+
 [pull]
 	ff = only
+
 [push]
 	default = simple
+
 [help]
 	autoCorrect = prompt
+
 [github]
 	user = mettz
+
 [protocol]
 	version = 2
+
+[alias]
+	c = commit
+	s = status
+	st = status
+	lg = log --oneline
+	last = log -1 HEAD

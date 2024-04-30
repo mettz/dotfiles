@@ -1,10 +1,10 @@
-@import "./mocha.css";
+@import "./latte.css";
 
 * {
   border: none;
   font-family: FontAwesome, "IosevkaTerm Nerd Font", monospace;
   font-size: 16px;
-  color: @text;
+  color: #fff;
 }
 
 window#waybar {
@@ -25,7 +25,7 @@ window#waybar {
 }
 
 #workspaces button.active {
-  background-color: alpha(@sapphire, 0.75);
+  background-color: alpha(@sky, 1.0);
 }
 
 #clock,
