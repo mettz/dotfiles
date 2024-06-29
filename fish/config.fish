@@ -25,6 +25,11 @@ else
 	abbr -a ll 'll -a'
 end
 
+if command -v nvim > /dev/null
+	abbr -a vim 'nvim'
+	abbr -a e 'nvim'
+end
+
 # Utility functions
 function dotfiles
     /usr/bin/git --git-dir="$HOME/.dotfiles" --work-tree="$HOME" $argv
@@ -39,6 +44,10 @@ if not string match -q -- $PNPM_HOME $PATH
   set -gx PATH "$PNPM_HOME" $PATH
 end
 # pnpm end
+
+# bun
+set --export BUN_INSTALL "$HOME/.bun"
+set --export PATH $BUN_INSTALL/bin $PATH
 
 # Misc
 source $HOME/.asdf/asdf.fish
@@ -64,3 +73,7 @@ function fish_prompt
 end
 
 set fish_greeting
+
+# bun
+set --export BUN_INSTALL "$HOME/.bun"
+set --export PATH $BUN_INSTALL/bin $PATH
