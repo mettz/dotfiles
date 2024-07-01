@@ -16,14 +16,23 @@ hypr = "~/.config/hypr"
 [waybar.files]
 waybar = "~/.config/waybar"
 
+[wlogout.files]
+wlogout = "~/.config/wlogout"
+
 [wofi.files]
 wofi = "~/.config/wofi"
 
 [yambar.files]
 yambar = "~/.config/yambar"
 
+[zathura.files]
+zathura = "~/.config/zathura"
+
 [tiling]
-depends = ["dunst", "hypr", "waybar", "wofi"]
+depends = ["dunst", "hypr", "waybar", "wlogout", "wofi"]
 
 [shell]
 depends = ["alacritty", "fish", "git"]
+
+[apps]
+depends = ["zathura"]

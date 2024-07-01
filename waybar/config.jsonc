@@ -11,7 +11,7 @@
     ],
     
     "modules-center": [
-        "hyprland/window"
+	"clock"
     ],
     
     "modules-right": [
@@ -19,15 +19,11 @@
         "battery",
         "backlight",
         "pulseaudio",
-	"clock"
+	"custom/exit"
     ],
     "clock": {
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "format": "{:%a %d %b %H:%M}"
-    },
-    "hyprland/window": {
-	"format": "{class}",
-	"separate-outputs": true
     },
     "network": {
         "format-wifi": "<span color='#749bf0'>{icon}</span>  {essid}",
@@ -65,7 +61,12 @@
         "format-icons": {
             "headphone": " ",
             "headset": " ",
-            "default": ["", "", ""]
+            "default": ["", "", " "]
         }
+    },
+    "custom/exit": {
+        "format": " ",
+        "on-click": "wlogout",
+        "tooltip-format": "Power Menu"
     }
 }
