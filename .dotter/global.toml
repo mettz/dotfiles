@@ -4,8 +4,15 @@ alacritty = "~/.config/alacritty"
 [dunst.files]
 dunst = "~/.config/dunst"
 
+[eww.files]
+eww = "~/.config/eww"
+"eww/eww.yuck" = { target = "~/.config/eww/eww.yuck", type = "symbolic" }
+
 [fish.files]
 fish = "~/.config/fish"
+
+[keyd.files]
+keyd = { target = "/etc/keyd", type = "symbolic", owner = "root" }
 
 [git.files]
 git = "~/.config/git"
@@ -28,8 +35,11 @@ yambar = "~/.config/yambar"
 [zathura.files]
 zathura = "~/.config/zathura"
 
+[system]
+depends = ["keyd"]
+
 [tiling]
-depends = ["dunst", "hypr", "waybar", "wlogout", "wofi"]
+depends = ["dunst", "eww", "hypr", "system", "waybar", "wlogout", "wofi"]
 
 [shell]
 depends = ["alacritty", "fish", "git"]
