@@ -20,6 +20,9 @@ git = "~/.config/git"
 [hypr.files]
 hypr = "~/.config/hypr"
 
+[scripts.files]
+scripts = "~/.config/scripts"
+
 [waybar.files]
 waybar = "~/.config/waybar"
 
@@ -39,7 +42,7 @@ zathura = "~/.config/zathura"
 depends = ["keyd"]
 
 [tiling]
-depends = ["dunst", "eww", "hypr", "system", "waybar", "wlogout", "wofi"]
+depends = ["dunst", "eww", "hypr", "scripts", "system", "waybar", "wlogout", "wofi"]
 
 [shell]
 depends = ["alacritty", "fish", "git"]

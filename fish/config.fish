@@ -1,7 +1,10 @@
 # Shell start
-if test -f /usr/share/autojump/autojump.fish;
-	source /usr/share/autojump/autojump.fish;
+if command -v zoxide > /dev/null
+    zoxide init fish | source
+else if test -f /usr/share/autojump/autojump.fish;
+    source /usr/share/autojump/autojump.fish;
 end
+
 
 set TTY (tty)
 if [ "$TTY" = "/dev/tty1" ]
@@ -33,6 +36,15 @@ end
 # Utility functions
 function dotfiles
     /usr/bin/git --git-dir="$HOME/.dotfiles" --work-tree="$HOME" $argv
+end
+
+function yy
+   set tmp (mktemp -t "yazi-cwd.XXXXXX")
+   yazi $argv --cwd-file="$tmp"
+   if set cwd (command cat -- "$tmp"); and [ -n "$cwd" ]; and [ "$cwd" != "$PWD" ]
+   	cd -- "$cwd"
+   end
+   rm -f -- "$tmp"
 end
 
 # Path modifications
@@ -73,7 +85,3 @@ function fish_prompt
 end
 
 set fish_greeting
-
-# bun
-set --export BUN_INSTALL "$HOME/.bun"
-set --export PATH $BUN_INSTALL/bin $PATH
