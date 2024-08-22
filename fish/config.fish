@@ -61,6 +61,10 @@ end
 set --export BUN_INSTALL "$HOME/.bun"
 set --export PATH $BUN_INSTALL/bin $PATH
 
+# prgx
+set --export HELVEST_HOME "$HOME/Library/Helvest"
+set --export PATH $HELVEST_HOME/bin $PATH
+
 # Misc
 source $HOME/.asdf/asdf.fish
 
