@@ -65,6 +65,11 @@
     lm_sensors # for `sensors` command
     pciutils # lspci
     usbutils # lsusb
+
+    # node.js
+    nodejs
+    pnpm
+    bun
   ];
 
   # basic configuration of git, please change to your own
