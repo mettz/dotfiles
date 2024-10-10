@@ -1,21 +1,38 @@
 {
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/release-24.05";
+    nur.url = "github:nix-community/nur";
     home-manager = {
       url = "github:nix-community/home-manager/release-24.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, ... }: 
+  outputs = inputs@{ nixpkgs, home-manager, ... }: 
     let
+      system = "x86_64-linux";
     in
     {
       nixosConfigurations = {
         rhaenyra = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
+          inherit system;
+
+	  specialArgs = { inherit inputs; };
+
           modules = [
-            ./configuration.nix  
+            ./hosts/rhaenyra
+
+            ./users/mettz
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.extraSpecialArgs = { inherit inputs system; };
+              home-manager.users.mettz.imports = [
+                ./users/mettz/dots.nix
+              ];
+	      home-manager.backupFileExtension = "bak";
+            }
           ];
         };
       };
