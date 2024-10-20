@@ -67,6 +67,13 @@
   # Enable sound with pipewire.
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
+  security.sudo = {
+    enable = true;
+    extraConfig = ''
+      Defaults passwd_timeout=0
+      Defaults timestamp_timeout=10
+    '';
+  };
   services.pipewire = {
     enable = true;
     alsa.enable = true;
@@ -83,10 +90,6 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
-  nixpkgs.overlays = [ inputs.nur.overlay ];
-
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
@@ -95,10 +98,6 @@
      wget
   ];
 
-  programs.appimage = {
-    enable = true;
-    binfmt = true;
-  };
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
