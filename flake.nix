@@ -8,6 +8,7 @@
     };
     yazi.url = "github:sxyazi/yazi";
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
+    catppuccin-vsc.url = "https://flakehub.com/f/catppuccin/vscode/*.tar.gz";
   };
 
   outputs = inputs@{ nixpkgs, home-manager, ... }: 

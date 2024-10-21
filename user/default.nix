@@ -5,6 +5,8 @@ let
   shell = userSettings.shell;
 in
 {
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
+
   fonts = {
     enableDefaultPackages = true;
     fontDir.enable = true;
@@ -31,6 +33,7 @@ in
   nixpkgs.config.allowUnfree = true;
   nixpkgs.overlays = [
     inputs.nur.overlay
+    inputs.catppuccin-vsc.overlays.default
     inputs.yazi.overlays.default
   ];
 }

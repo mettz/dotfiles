@@ -89,6 +89,9 @@ in
     pnpm
     bun
 
+    # nix
+    nixfmt-rfc-style
+
     # gui apps
     vesktop # alternative discord client with support for screen sharing on wayland
     zathura

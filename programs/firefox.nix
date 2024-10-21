@@ -11,7 +11,7 @@
         ublock-origin
         vimium
         keepa
-      ]; 
+      ];
       search = {
         default = "DuckDuckGo";
         force = true;
@@ -26,7 +26,26 @@
       #     url = "https://nixos.org";
       #   }];
       # }
-      settings = {};
+      settings = {
+        "browser.toolbars.bookmarks.visibility" = "never";
+        "browser.newtabpage.pinned" = [ ];
+        "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
+        "browser.newtabpage.activity-stream.showSponsored" = false;
+        "browser.newtabpage.activity-stream.system.showSponsored" = false;
+        "browser.newtabpage.activity-stream.improvesearch.topSiteSearchShortcuts" = false;
+        "browser.newtabpage.activity-stream.improvesearch.topSiteSearchShortcuts.searchEngines" = "";
+        "browser.newtabpage.activity-stream.feeds.section.highlights" = true;
+        "browser.search.suggest.enabled.private" = true;
+        "extensions.pocket.enabled" = false;
+        "extensions.formautofill.creditCards.enabled" = false;
+        "identity.fxaccounts.toolbar.enabled" = false;
+        "privacy.globalprivacycontrol.enabled" = true;
+        "privacy.donottrackheader.enabled" = true;
+        "signon.autofillForms" = false;
+        "signon.rememberSignons" = false;
+        "ui.key.menuAccessKeyFocuses" = false;
+        "widget.use-xdg-desktop-portal.file-picker" = 1;
+      };
     };
   };
 }
