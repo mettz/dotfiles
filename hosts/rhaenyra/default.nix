@@ -4,9 +4,13 @@
 
 {
   pkgs,
+  userSettings,
   ...
 }:
 
+let
+  username = userSettings.username;
+in
 {
   imports = [
     ./hardware-configuration.nix
@@ -67,10 +71,20 @@
   security.rtkit.enable = true;
   security.sudo = {
     enable = true;
-    extraConfig = ''
-      Defaults passwd_timeout=0
-      Defaults timestamp_timeout=10
-    '';
+    extraRules = [
+      {
+        users = [ username ];
+        commands = [
+          {
+            command = "ALL";
+            options = [
+              "NOPASSWD"
+              "SETENV"
+            ];
+          }
+        ];
+      }
+    ];
   };
   services.pipewire = {
     enable = true;
@@ -79,8 +93,14 @@
     pulse.enable = true;
   };
 
-  # Enable fingerprint reader support + login with it
+  # Enable fingerprint reader support but don't login with it
+  # otherwise the UI gets stuck after typing the password
+  # while it waits for the fingerprint but without informing
+  # the user that it is waiting (see the following issue for
+  # details: https://github.com/NixOS/nixpkgs/issues/239770)
   services.fprintd.enable = true;
+  security.pam.services.login.fprintAuth = false;
+  security.pam.services.sudo.fprintAuth = false;
 
   environment.systemPackages = with pkgs; [
     git

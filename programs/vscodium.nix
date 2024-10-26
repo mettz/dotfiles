@@ -134,24 +134,24 @@ in
     };
     extensions = [
       extensions.vscode-marketplace.bradlc.vscode-tailwindcss
-      extensions.vscode-marketplace-release.dart-code.dart-code
-      #extensions.vscode-marketplace.dart-code.flutter
-      #extensions.vscode-marketplace.eamodio.gitlens
-      #extensions.vscode-marketplace.esbenp.prettier-vscode
-      #extensions.vscode-marketplace.github.copilot
-      #extensions.vscode-marketplace.jnoortheen.nix-ide
-      #extensions.vscode-marketplace.llvm-vs-code-extensions.vscode-clangd
-      #extensions.vscode-marketplace.ms-vsliveshare.vsliveshare
-      #extensions.vscode-marketplace.rust-lang.rust-analyzer
-      #extensions.vscode-marketplace.tamasfe.even-better-toml
-      #extensions.vscode-marketplace.tauri-apps.tauri-vscode
-      #extensions.vscode-marketplace.tomoki1207.pdf
-      #extensions.vscode-marketplace.usernamehw.errorlens
-      #extensions.vscode-marketplace.visualstudioexptteam.intellicode-api-usage-examples
-      #extensions.vscode-marketplace.visualstudioexptteam.vscodeintellicode
-      #extensions.vscode-marketplace.vscode-icons-team.vscode-icons
-      #extensions.vscode-marketplace.xaver.clang-format
-      #extensions.vscode-marketplace.yzhang.markdown-all-in-one
+      extensions.vscode-marketplace.dart-code.dart-code
+      extensions.vscode-marketplace.dart-code.flutter
+      extensions.vscode-marketplace.eamodio.gitlens
+      extensions.vscode-marketplace.esbenp.prettier-vscode
+      extensions.vscode-marketplace.github.copilot
+      extensions.vscode-marketplace.jnoortheen.nix-ide
+      extensions.vscode-marketplace.llvm-vs-code-extensions.vscode-clangd
+      extensions.vscode-marketplace.ms-vsliveshare.vsliveshare
+      extensions.vscode-marketplace.rust-lang.rust-analyzer
+      extensions.vscode-marketplace.tamasfe.even-better-toml
+      extensions.vscode-marketplace.tauri-apps.tauri-vscode
+      extensions.vscode-marketplace.tomoki1207.pdf
+      extensions.vscode-marketplace.usernamehw.errorlens
+      extensions.vscode-marketplace.visualstudioexptteam.intellicode-api-usage-examples
+      extensions.vscode-marketplace.visualstudioexptteam.vscodeintellicode
+      extensions.vscode-marketplace.vscode-icons-team.vscode-icons
+      extensions.vscode-marketplace.xaver.clang-format
+      extensions.vscode-marketplace.yzhang.markdown-all-in-one
 
       # Catppuccin comes from its overlay so that it can be configured in a declarative way
       (pkgs.catppuccin-vsc.override {

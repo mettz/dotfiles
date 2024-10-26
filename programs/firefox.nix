@@ -36,6 +36,7 @@
         "browser.newtabpage.activity-stream.improvesearch.topSiteSearchShortcuts.searchEngines" = "";
         "browser.newtabpage.activity-stream.feeds.section.highlights" = true;
         "browser.search.suggest.enabled.private" = true;
+        "browser.sessionstore.max_resumed_crashes" = 0;
         "extensions.pocket.enabled" = false;
         "extensions.formautofill.creditCards.enabled" = false;
         "identity.fxaccounts.toolbar.enabled" = false;
