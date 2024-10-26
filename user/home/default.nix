@@ -76,6 +76,7 @@ in
     tree
     git-crypt
     inputs.agenix.packages.${system}.default
+    bitwarden-cli
 
     # productivity
     btop # replacement of htop/nmon
@@ -108,7 +109,7 @@ in
   programs.eza.enable = true;
   programs.yazi = {
     enable = true;
-#    shellWrapperName = "y";
+    #    shellWrapperName = "y";
   };
 
   xdg.userDirs = {
