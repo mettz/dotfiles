@@ -10,6 +10,10 @@ let
   extensions = inputs.nix-vscode-extensions.extensions.${system};
 in
 {
+  home.packages = with pkgs; [
+    nixfmt-rfc-style # official Nix formatter
+    nil # Nix LSP implementation
+  ];
   programs.vscode = {
     enable = true;
     package = pkgs.vscodium;
@@ -29,7 +33,7 @@ in
 
       # Editor
       "editor.acceptSuggestionOnCommitCharacter" = false;
-      "editor.fontSize" = 15;
+      "editor.fontSize" = 16;
       "editor.fontFamily" = "Iosevka";
       "editor.fontWeight" = 500;
       "editor.fontLigatures" = true;
@@ -48,7 +52,7 @@ in
 
       # Terminal
       "terminal.integrated.fontFamily" = "IosevkaTerm Nerd Font Mono";
-      "terminal.integrated.fontSize" = 15;
+      "terminal.integrated.fontSize" = 17;
       "terminal.integrated.minimumContrastRatio" = 1;
       "terminal.integrated.defaultProfile.linux" = "fish";
       "terminal.integrated.profiles.linux" = {
@@ -88,12 +92,23 @@ in
         "editor.formatOnSave" = true;
         "editor.formatOnPaste" = true;
       };
+      "clangd.path" = "/home/mettz/.config/VSCodium/User/globalStorage/llvm-vs-code-extensions.vscode-clangd/install/18.1.3/clangd_18.1.3/bin/clangd";
 
       # Nix
       "[nix]" = {
         "editor.formatOnPaste" = true;
         "editor.formatOnSave" = true;
-        "editor.defaultFormatter" = "brettm12345.nixfmt-vscode";
+        "editor.defaultFormatter" = "jnoortheen.nix-ide";
+      };
+      "nix.formatterPath" = "nixfmt";
+      "nix.enableLanguageServer" = true;
+      "nix.serverPath" = "nil";
+      "nix.serverSettings" = {
+        "nil" = {
+          "formatting" = {
+            "command" = [ "nixfmt" ];
+          };
+        };
       };
 
       # Other extensions
@@ -117,27 +132,26 @@ in
         "*.c" = "c";
       };
     };
-    extensions = with pkgs.vscode-extensions; [
+    extensions = [
       extensions.vscode-marketplace.bradlc.vscode-tailwindcss
-      extensions.vscode-marketplace.bbenoist.nix
-      extensions.vscode-marketplace.brettm12345.nixfmt-vscode
-      extensions.vscode-marketplace.dart-code.dart-code
-      extensions.vscode-marketplace.dart-code.flutter
-      extensions.vscode-marketplace.eamodio.gitlens
-      extensions.vscode-marketplace.esbenp.prettier-vscode
-      extensions.vscode-marketplace.github.copilot
-      extensions.vscode-marketplace.llvm-vs-code-extensions.vscode-clangd
-      extensions.vscode-marketplace.ms-vsliveshare.vsliveshare
-      extensions.vscode-marketplace.rust-lang.rust-analyzer
-      extensions.vscode-marketplace.tamasfe.even-better-toml
-      extensions.vscode-marketplace.tauri-apps.tauri-vscode
-      extensions.vscode-marketplace.tomoki1207.pdf
-      extensions.vscode-marketplace.usernamehw.errorlens
-      extensions.vscode-marketplace.visualstudioexptteam.intellicode-api-usage-examples
-      extensions.vscode-marketplace.visualstudioexptteam.vscodeintellicode
-      extensions.vscode-marketplace.vscode-icons-team.vscode-icons
-      extensions.vscode-marketplace.xaver.clang-format
-      extensions.vscode-marketplace.yzhang.markdown-all-in-one
+      extensions.vscode-marketplace-release.dart-code.dart-code
+      #extensions.vscode-marketplace.dart-code.flutter
+      #extensions.vscode-marketplace.eamodio.gitlens
+      #extensions.vscode-marketplace.esbenp.prettier-vscode
+      #extensions.vscode-marketplace.github.copilot
+      #extensions.vscode-marketplace.jnoortheen.nix-ide
+      #extensions.vscode-marketplace.llvm-vs-code-extensions.vscode-clangd
+      #extensions.vscode-marketplace.ms-vsliveshare.vsliveshare
+      #extensions.vscode-marketplace.rust-lang.rust-analyzer
+      #extensions.vscode-marketplace.tamasfe.even-better-toml
+      #extensions.vscode-marketplace.tauri-apps.tauri-vscode
+      #extensions.vscode-marketplace.tomoki1207.pdf
+      #extensions.vscode-marketplace.usernamehw.errorlens
+      #extensions.vscode-marketplace.visualstudioexptteam.intellicode-api-usage-examples
+      #extensions.vscode-marketplace.visualstudioexptteam.vscodeintellicode
+      #extensions.vscode-marketplace.vscode-icons-team.vscode-icons
+      #extensions.vscode-marketplace.xaver.clang-format
+      #extensions.vscode-marketplace.yzhang.markdown-all-in-one
 
       # Catppuccin comes from its overlay so that it can be configured in a declarative way
       (pkgs.catppuccin-vsc.override {

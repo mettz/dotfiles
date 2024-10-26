@@ -1,7 +1,14 @@
-{ config, pkgs, inputs, userSettings, ... }:
+{
+  pkgs,
+  inputs,
+  systemSettings,
+  userSettings,
+  ...
+}:
 
 let
   username = userSettings.username;
+  system = systemSettings.system;
 in
 {
   imports = [
@@ -12,7 +19,6 @@ in
     ../../programs/vscodium.nix
     ../../programs/libreoffice.nix
   ];
-
 
   # This value determines the home Manager release that your
   # configuration is compatible with. This helps avoid breakage
@@ -54,9 +60,10 @@ in
     jq # A lightweight and flexible command-line JSON processor
     dua
     fd
+    wl-clipboard
 
     # networking tools
-    dnsutils  # `dig` + `nslookup`
+    dnsutils # `dig` + `nslookup`
     ldns # replacement of `dig`, it provide the command `drill`
     aria2 # A lightweight multi-protocol & multi-source command-line download utility
     socat # replacement of openbsd-netcat
@@ -68,9 +75,10 @@ in
     which
     tree
     git-crypt
+    inputs.agenix.packages.${system}.default
 
     # productivity
-    btop  # replacement of htop/nmon
+    btop # replacement of htop/nmon
     iotop # io monitoring
     iftop # network monitoring
 
@@ -89,9 +97,6 @@ in
     pnpm
     bun
 
-    # nix
-    nixfmt-rfc-style
-
     # gui apps
     vesktop # alternative discord client with support for screen sharing on wayland
     zathura
@@ -101,7 +106,10 @@ in
   programs.home-manager.enable = true;
   programs.bat.enable = true;
   programs.eza.enable = true;
-  programs.yazi.enable = true;
+  programs.yazi = {
+    enable = true;
+#    shellWrapperName = "y";
+  };
 
   xdg.userDirs = {
     enable = true;

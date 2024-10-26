@@ -1,4 +1,9 @@
-{ inputs, pkgs, userSettings, ... }:
+{
+  inputs,
+  pkgs,
+  userSettings,
+  ...
+}:
 
 let
   username = userSettings.username;
@@ -12,7 +17,12 @@ in
     fontDir.enable = true;
     packages = with pkgs; [
       iosevka-bin
-      (nerdfonts.override { fonts = [ "Iosevka" "IosevkaTerm" ]; }) 
+      (nerdfonts.override {
+        fonts = [
+          "Iosevka"
+          "IosevkaTerm"
+        ];
+      })
     ];
   };
 
@@ -21,7 +31,10 @@ in
       shell = pkgs.${shell};
       uid = 1000;
       isNormalUser = true;
-      extraGroups = [ "networkmanager" "wheel" ];
+      extraGroups = [
+        "networkmanager"
+        "wheel"
+      ];
       group = username;
     };
     groups.${username} = {
