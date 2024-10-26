@@ -1,1 +1,0 @@
-/home/mettz/.asdf/completions/asdf.fish
